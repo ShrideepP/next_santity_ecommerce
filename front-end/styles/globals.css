@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+        transition: all 250ms;
+    }
+
+    .my-masonry-grid {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-left: -16px;
+        width: auto;
+    }
+    
+    .my-masonry-grid_column {
+        padding-left: 16px;
+        background-clip: padding-box;
+    }
+    
+    .my-masonry-grid_column > div {
+        margin-bottom: 16px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .my-masonry-grid {
+            margin-left: -24px;
+        }
+        
+        .my-masonry-grid_column {
+            padding-left: 24px;
+        }
+        
+        .my-masonry-grid_column>div {
+            margin-bottom: 24px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .my-masonry-grid {
+            margin-left: -32px;
+        }
+        
+        .my-masonry-grid_column {
+            padding-left: 32px;
+        }
+        
+        .my-masonry-grid_column>div {
+            margin-bottom: 32px;
+        }
+    }
+
+    .spaceX {
+        @apply px-8 md:px-16 lg:px-24
+    }
+
+    .spaceY {
+        @apply py-4 md:py-8 lg:py-12
+    }
+
+}
