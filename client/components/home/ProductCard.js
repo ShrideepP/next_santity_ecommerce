@@ -7,28 +7,30 @@ const formatter = new Intl.NumberFormat('en-US', {
     currency: 'USD',
 });
 
-const ProductCard = ({ id, name, price, images }) => {
+const ProductCard = ({ name, slug, price, images }) => {
     return (
         <div>
-            <Link href={`product/${id}`}>
+            <Link href={`product/${slug}`}>
                 <div className="space-y-6">
-                    <div className="w-full h-60 relative overflow-hidden rounded shadow">
+                    <div className="w-full h-60 relative overflow-hidden bg-secondary">
                         <Image
-                            src={urlFor(images[0]).url()}
+                            src={urlFor(images && images[0]).url()}
                             alt="product-image"
                             fill
+                            priority
                             sizes="(max-width: 768px) 100vw,
                             (max-width: 1200px) 50vw,
                             33vw"
-                            className="object-cover hover:scale-[1.2]" 
+                            className="object-cover object-center scale-75 hover:scale-90" 
                         />
                     </div>
                     <div className="space-y-2">
-                        <h3 className="text-lg text-dominant font-extrabold tracking-wide uppercase">
+                        <h3 className="text-base text-dominant font-medium tracking-tight">
                             { name }
                         </h3>
-                        <h4 className="text-lg text-accent font-bold tracking-wide uppercase">
-                            { formatter.format(price) }
+                        <span className="text-base text-compliment font-normal tracking-tight">Men's Shoe</span>
+                        <h4 className="text-base text-dominant font-medium tracking-tight">
+                            USD: { formatter.format(price) }
                         </h4>
                     </div>
                 </div>

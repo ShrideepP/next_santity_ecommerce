@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 const Banner = () => {
     return (
         <section className="w-full h-fit spaceX">
-            <div style={{ backgroundImage: `linear-gradient(to right, rgba(0,0,0,.6), rgba(0,0,0,.4)), url('/images/banner.jpg')` }} className="w-full h-[65vh] spaceX flex items-center bg-cover bg-center bg-no-repeat rounded shadow">
+            <div style={{ backgroundImage: `linear-gradient(to right, rgba(0,0,0,.4), rgba(0,0,0,.4)), url('/images/banner.jpg')` }} className="w-full h-[65vh] spaceX flex items-center bg-cover bg-center bg-no-repeat">
                 <div className="space-y-6">
                     <div className="space-y-4">
                         <h1 className="text-3xl md:text-4xl text-white font-extrabold tracking-wide uppercase">

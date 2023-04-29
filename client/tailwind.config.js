@@ -10,9 +10,9 @@ module.exports = {
             colors: {
                 'accent': '#F43F5E',
                 'dominant': '#1F1F1F',
-                'compliment': '#3D3D3D',
+                'compliment': '#4B5563',
                 'primary': '#E6EAEF',
-                'secondary': '#F9FAFB',
+                'secondary': '#F6F6F6',
             },
             fontFamily: {
                 'poppins': ['Poppins', 'sans-serif'],

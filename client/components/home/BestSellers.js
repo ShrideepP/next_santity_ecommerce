@@ -28,8 +28,8 @@ const BestSellers = ({ products }) => {
                 {products?.map(product => (
                     <ProductCard
                         key={product._id}
-                        id={product._id}
                         name={product.name}
+                        slug={product.slug.current}
                         price={product.price}
                         images={product.image}
                     />
