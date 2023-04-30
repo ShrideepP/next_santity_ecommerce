@@ -24,14 +24,13 @@ const ProductCard = ({ name, slug, price, images }) => {
                             className="object-cover object-center scale-75 hover:scale-90" 
                         />
                     </div>
-                    <div className="space-y-2">
+                    <div>
                         <h3 className="text-base text-dominant font-medium tracking-tight">
                             { name }
                         </h3>
-                        <span className="text-base text-compliment font-normal tracking-tight">Men's Shoe</span>
-                        <h4 className="text-base text-dominant font-medium tracking-tight">
+                        <span className="block text-base text-compliment font-medium tracking-tight leading-loose">
                             USD: { formatter.format(price) }
-                        </h4>
+                        </span>
                     </div>
                 </div>
             </Link>

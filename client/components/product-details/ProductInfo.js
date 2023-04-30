@@ -1,11 +1,7 @@
 import React from 'react';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar, AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { CartContext } from '@/context/CartContext';
-
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-});
+import { formatter } from '@/constants';
  
 const ProductInfo = ({ product }) => {
 
@@ -14,7 +10,7 @@ const ProductInfo = ({ product }) => {
     return (
         <div className='w-full h-fit space-y-4'>
             <div className='space-y-2'>
-                <h1 className='text-2xl text-dominant font-extrabold'>{product.name}</h1>
+                <h1 className='text-xl text-dominant font-medium tracking-tight'>{product.name}</h1>
                 <p className='text-sm text-compliment font-normal leading-relaxed'>{product.details}</p>
             </div>
             <div className='flex items-center gap-x-1'>
@@ -25,14 +21,14 @@ const ProductInfo = ({ product }) => {
                 &nbsp;
                 <span className='text-xs text-compliment font-medium'>(20)</span>
             </div>
-            <h5 className='text-lg text-accent font-bold'>{formatter.format(product.price)}</h5>
+            <h5 className='text-xl text-accent font-medium'>{formatter.format(product.price)}</h5>
             <div className='inline-flex border border-compliment'>
                 <button onClick={decreaseQuantity} type='button' className='w-10 h-9 grid place-items-center border-r border-compliment'>
-                    <span className='text-lg text-compliment font-semibold'>-</span>
+                    <AiOutlineMinus className='text-xs text-dominant' />
                 </button>
                 <span className='w-10 h-9 grid place-items-center text-sm text-compliment font-medium'>{quantity}</span>
                 <button onClick={increaseQuantity} type='button' className='w-10 h-9 grid place-items-center border-l border-compliment'>
-                    <span className='text-lg text-compliment font-semibold'>+</span>
+                    <AiOutlinePlus className='text-xs text-dominant' />
                 </button>
             </div>
             <div className='flex gap-x-4'>
