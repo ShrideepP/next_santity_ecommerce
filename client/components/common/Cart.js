@@ -37,7 +37,7 @@ const Cart = () => {
     
     return (
         <aside ref={cartRef} style={{background: 'rgba(0,0,0,.2)'}} className='w-full h-screen flex justify-end fixed top-0 left-0 z-50'>
-            <div className='w-full md:w-2/4 lg:w-1/4 h-screen overflow-y-scroll space-y-4 md:space-y-6 lg:space-y-8 px-4 md:px-8 spaceY bg-white'>
+            <div className='w-full md:w-2/4 lg:w-[35%] h-screen overflow-y-scroll space-y-4 md:space-y-6 lg:space-y-8 px-4 md:px-8 spaceY bg-white'>
                 <button 
                     type='button'
                     onClick={() => setShowCart(false)}

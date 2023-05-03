@@ -1,10 +1,9 @@
 import Stripe from 'stripe';
-import { PUBLISHABLE_KEY } from '@/constants';
+import { SECRET_KEY } from '@/constants';
 
-const stripe = new Stripe(PUBLISHABLE_KEY);
+const stripe = new Stripe(SECRET_KEY);
 
 export default async function handler(req, res) {
-    console.log(req.body.cartItems);
     if (req.method === 'POST') {
         try {
             const params = {
@@ -13,7 +12,8 @@ export default async function handler(req, res) {
                 payment_method_types: ['card'],
                 billing_address_collection: 'auto',
                 shipping_options: [
-                    { shipping_rate: 'shr_1Kn3IaEnylLNWUqj5rqhg9oV' },
+                    { shipping_rate: 'shr_1N3hMcSHhV0H9yauMpwRckac' },
+                    { shipping_rate: 'shr_1N3hNGSHhV0H9yauEvpPL2bG' },
                 ],
                 line_items: req.body.map((item) => {
                     const img = item.image[0].asset._ref;
