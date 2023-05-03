@@ -6,12 +6,34 @@ import { urlFor } from '@/lib/client';
 import { formatter } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
+import getStripe from '@/lib/stripe';
+import { toast } from 'react-hot-toast';
 
 const Cart = () => {
 
     const cartRef = useRef(null);
 
     const { totalPrice, totalQuantities, onRemove, cartItems, setShowCart, toggleCartItemsQuantity } = CartContext();
+
+    const handleCheckout = async () => {
+        const stripe = await getStripe();
+
+        const response = await fetch('/api/stripe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cartItems),
+        });
+
+        if(response.statusCode === 500) return;
+        
+        const data = await response.json();
+
+        toast.loading('Redirecting...');
+
+        stripe.redirectToCheckout({ sessionId: data.id });
+    };
     
     return (
         <aside ref={cartRef} style={{background: 'rgba(0,0,0,.2)'}} className='w-full h-screen flex justify-end fixed top-0 left-0 z-50'>
@@ -36,7 +58,7 @@ const Cart = () => {
                                     <button 
                                         type='button' 
                                         onClick={() => setShowCart(false)}
-                                        className='w-48 h-10 text-center bg-accent'
+                                        className='w-48 h-10 text-center bg-accent hover:scale-105'
                                     >
                                         <span className='text-xs text-white font-bold uppercase'>Continue Shopping</span>
                                     </button>
@@ -53,6 +75,9 @@ const Cart = () => {
                                         src={urlFor(item?.image[0]).url()}
                                         alt='product-image'
                                         fill
+                                        sizes="(max-width: 768px) 100vw,
+                                        (max-width: 1200px) 50vw,
+                                        33vw"
                                         className='object-contain' 
                                     />
                                 </div>
@@ -94,8 +119,9 @@ const Cart = () => {
                         </div>
                         <div>
                             <button 
+                                onClick={handleCheckout}
                                 type='button'
-                                className='w-full h-10 grid place-items-center bg-accent'
+                                className='w-full h-10 grid place-items-center bg-accent hover:scale-105'
                             >
                                 <span className='text-xs text-white font-bold uppercase'>
                                     Pay with Stripe

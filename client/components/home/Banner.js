@@ -17,7 +17,7 @@ const Banner = () => {
                     </div>
                     <div>
                         <Link to="best-sellers" spy={true} smooth={true} duration={250}>
-                            <button className="px-6 h-10 bg-accent rounded-sm">
+                            <button className="px-6 h-10 bg-accent hover:scale-105">
                                 <span className="text-xs text-white font-bold tracking-wide uppercase">Shop Now</span>
                             </button>
                         </Link>

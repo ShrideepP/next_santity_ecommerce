@@ -5,7 +5,12 @@ import { formatter } from '@/constants';
  
 const ProductInfo = ({ product }) => {
 
-    const { quantity, increaseQuantity, decreaseQuantity, onAdd } = CartContext();
+    const { quantity, increaseQuantity, setShowCart, decreaseQuantity, onAdd } = CartContext();
+
+    const handleBuyNow = () => {
+        onAdd(product, quantity);
+        setShowCart(true);
+    };
 
     return (
         <div className='w-full h-fit space-y-4'>
@@ -32,10 +37,10 @@ const ProductInfo = ({ product }) => {
                 </button>
             </div>
             <div className='flex gap-x-4'>
-                <button onClick={() => onAdd(product, quantity)} type='button' className='w-36 h-10 grid place-items-center border border-accent'>
+                <button onClick={() => onAdd(product, quantity)} type='button' className='w-36 h-10 grid place-items-center border border-accent hover:scale-105'>
                     <span className='text-xs text-accent font-bold uppercase'>Add To Cart</span>
                 </button>
-                <button type='button' className='w-36 h-10 grid place-items-center bg-accent'>
+                <button onClick={handleBuyNow} type='button' className='w-36 h-10 grid place-items-center bg-accent  hover:scale-105'>
                     <span className='text-xs text-white font-bold uppercase'>Buy Now</span>
                 </button>
             </div>
